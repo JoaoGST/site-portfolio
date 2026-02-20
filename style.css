@@ -1,0 +1,402 @@
+:root {
+  --bg-main: #0b0f14;
+  --bg-secondary: #111827;
+  --card-bg: #0f172a;
+
+  --text-main: #e5e7eb;
+  --text-muted: #9ca3af;
+
+  --accent: #1e3a8a;
+  --accent-light: #3b82f6;
+  --border: #1f2937;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* 1️⃣ FUNDO MAIS PROFUNDO */
+body {
+  font-family: 'Inter', sans-serif;
+  background:
+    radial-gradient(circle at top, #141a33, transparent 60%),
+    linear-gradient(180deg, var(--bg-main), var(--bg-secondary));
+  color: var(--text-main);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* 2️⃣ BLURS DECORATIVOS */
+.bg-blur {
+  position: fixed;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  filter: blur(140px);
+  opacity: 0.15;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.blur-1 {
+  background: var(--accent-light);
+  top: 20%;
+  left: -120px;
+}
+
+.blur-2 {
+  background: var(--accent);
+  bottom: 10%;
+  right: -120px;
+}
+
+/* HEADER */
+.header {
+  position: relative;
+  z-index: 10;
+  background: radial-gradient(circle at top, #0f172a, #020617);
+}
+
+/* NAV BAR FULL WIDTH */
+.nav {
+  position: relative;
+  z-index: 20;
+  width: 100%;
+}
+
+/* SOMBRA / GRADIENTE DO TOPO */
+.nav::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 140px;
+  background: linear-gradient(
+    to bottom,
+    rgba(2, 6, 23, 0.9),
+    rgba(2, 6, 23, 0)
+  );
+  backdrop-filter: blur(8px);
+  z-index: -1;
+}
+
+/* CONTEÚDO CENTRAL DA NAV */
+.nav-inner {
+  max-width: 1400px;
+  margin: auto;
+  padding: 0 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* LOGO */
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 160px;
+  width: auto;
+  transform: translateY(6px);
+  filter: drop-shadow(0 6px 14px rgba(0,0,0,0.35));
+}
+
+/* LINKS */
+.nav-links {
+  display: flex;
+  align-items: center;
+}
+
+.nav-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  margin-left: 24px;
+  font-size: 0.95rem;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: var(--text-main);
+}
+
+/* 3️⃣ SECTIONS COM MAIS RESPIRO */
+.section {
+  max-width: 900px;
+  margin: auto;
+  padding: 60px 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.section h2 {
+  font-size: 1.7rem;
+  margin-bottom: 26px;
+  position: relative;
+}
+
+.section h2::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 3px;
+  background: var(--accent);
+  margin-top: 10px;
+  border-radius: 2px;
+}
+
+/* 4️⃣ DIVISOR MINIMALISTA */
+.section-divider {
+  width: 100%;
+  max-width: 900px;
+  height: 1px;
+  margin: 0 auto;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255,255,255,0.08),
+    transparent
+  );
+}
+
+#sobre p,
+#projeto p {
+  text-align: justify;
+  hyphens: auto;
+  margin-bottom: 1rem;
+}
+
+/* 5️⃣ DESTAQUE DE PALAVRAS */
+.highlight {
+  color: var(--accent-light);
+  font-weight: 500;
+}
+
+/* SKILLS */
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+/* 6️⃣ HOVER NAS SKILLS */
+.skills-grid span {
+  padding: 9px 16px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.02);
+  transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease;
+  cursor: default;
+}
+
+.skills-grid span:hover {
+  transform: translateY(-3px);
+  background: rgba(59,130,246,0.08);
+  color: var(--text-main);
+}
+
+/* PROJECTS */
+.projects {
+  display: grid;
+  gap: 22px;
+}
+
+/* 7️⃣ CARDS MAIS PREMIUM */
+.project-card {
+  padding: 26px;
+  background: linear-gradient(
+    180deg,
+    rgba(15,23,42,0.9),
+    rgba(15,23,42,0.7)
+  );
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.45);
+}
+
+.project-card h3 {
+  margin-bottom: 10px;
+}
+
+.project-card p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.project-card a {
+  display: inline-block;
+  margin-top: 10px;
+  text-decoration: none;
+  color: var(--accent-light);
+  font-size: 0.95rem;
+}
+
+/* CONTACT */
+.contact-links {
+  display: flex;
+  gap: 22px;
+}
+
+.contact-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: all 0.3s;
+}
+
+.contact-links a:hover {
+  color: var(--text-main);
+  border-bottom: 1px solid var(--accent-light);
+}
+
+/* FOOTER */
+.footer {
+  text-align: center;
+  padding: 35px;
+  color: #6b7280;
+  font-size: 0.85rem;
+  background: #020617;
+}
+
+/* HERO editorial estilo Massimo */
+.hero-vignelli {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  background: #020617;
+}
+
+/* FOTO DE FUNDO */
+.hero-vignelli .hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  filter: brightness(0.35) contrast(1.05);
+}
+
+/* CONTEÚDO */
+.hero-vignelli .hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1100px;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 70px 22px 0;
+}
+
+/* TÍTULO */
+.hero-vignelli h1 {
+  font-size: 4.5rem;
+  line-height: 0.95;
+  letter-spacing: -1px;
+  margin-bottom: 20px;
+}
+
+/* TEXTO MENOR */
+.hero-vignelli .hero-sub {
+  max-width: 420px;
+  font-size: 1rem;
+  color: #d1d5db;
+}
+
+/* 8️⃣ FRASE DE IMPACTO */
+.statement {
+  text-align: center;
+  padding: 120px 20px;
+}
+
+.statement p {
+  font-size: clamp(1.4rem, 3vw, 2.1rem);
+  color: var(--text-muted);
+  letter-spacing: -0.5px;
+}
+
+/* 9️⃣ FADE-IN MAIS SUAVE */
+.fade-in {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* TYPING */
+.typing {
+  font-family: 'Source Code', monospace;
+  font-size: 2rem;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.cursor {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  50.01%, 100% { opacity: 0; }
+}
+
+/* LEARNING LIST */
+.learning-list {
+  list-style: none;
+  display: grid;
+  gap: 12px;
+}
+
+.learning-list li {
+  padding-left: 25px;
+  position: relative;
+  color: var(--text-muted);
+}
+
+.learning-list li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--accent-light);
+}
+
+/* TIMELINE */
+.timeline {
+  display: grid;
+  gap: 24px;
+}
+
+.timeline-item {
+  border-left: 2px solid var(--border);
+  padding-left: 18px;
+}
+
+.timeline-item span {
+  color: var(--accent-light);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.timeline-item p {
+  color: var(--text-muted);
+  margin-top: 6px;
+}
