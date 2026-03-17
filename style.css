@@ -94,9 +94,9 @@ body {
 
 /* diminuir logo */
 .nav.scrolled .logo img {
-  height: 110px;
-  transform: translateY(0);
-  transition: all 0.35s ease;
+  height: 130px;
+  transform: scale(1.05);
+  filter: drop-shadow(0 8px 18px rgba(0,0,0,0.6));
 }
 
 /* SOMBRA / GRADIENTE DO TOPO */
@@ -118,16 +118,16 @@ body {
 .nav-inner {
   max-width: 1400px;
   margin: auto;
-  padding: 20px 48px;
+  padding: 18px 48px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* estado ao rolar */
 .nav.scrolled .nav-inner {
-  padding: 8px 48px;
+  padding: 10px 48px;
 }
 
 .logo img {
@@ -135,7 +135,7 @@ body {
   width: auto;
   transform: translateY(6px);
   filter: drop-shadow(0 6px 14px rgba(0,0,0,0.35));
-  transition: all 0.35s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* LOGO */
