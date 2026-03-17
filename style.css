@@ -94,7 +94,7 @@ body {
 
 /* diminuir logo */
 .nav.scrolled .logo img {
-  height: 90px;
+  height: 110px;
   transform: translateY(0);
   transition: all 0.35s ease;
 }
