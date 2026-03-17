@@ -62,23 +62,28 @@ body {
   position: relative;
   z-index: 10;
   background: radial-gradient(circle at top, #0f172a, #020617);
+  padding-top: 140px;
 }
 
 /* NAV BAR FULL WIDTH */
 .nav {
-  position: relative;
-  z-index: 20;
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
+  z-index: 999;
   transition: all 0.35s ease;
+  background: transparent;
 }
 
 /* estado quando rolar */
 .nav.scrolled {
-  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
   position: fixed;
   top: 0;
   left: 0;
-  backdrop-filter: blur(10px);
+  background: rgba(2, 6, 23, 0.75);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
 }
 
 /* diminuir altura geral */
@@ -113,11 +118,16 @@ body {
 .nav-inner {
   max-width: 1400px;
   margin: auto;
-  padding: 16px 48px; /* antes tava só 0 48px */
+  padding: 20px 48px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: all 0.35s ease;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* estado ao rolar */
+.nav.scrolled .nav-inner {
+  padding: 8px 48px;
 }
 
 .logo img {
@@ -135,10 +145,12 @@ body {
 }
 
 .logo img {
-  height: 160px;
-  width: auto;
-  transform: translateY(6px);
-  filter: drop-shadow(0 6px 14px rgba(0,0,0,0.35));
+  height: 140px;
+  transition: all 0.35s ease;
+}
+
+.nav.scrolled .logo img {
+  height: 80px;
 }
 
 /* LINKS */
