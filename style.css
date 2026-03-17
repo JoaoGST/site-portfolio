@@ -86,7 +86,7 @@ body {
 .nav-inner {
   max-width: 1400px;
   margin: auto;
-  padding: 14px 48px;
+  padding: 8px 48px; /* antes 14px */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -94,7 +94,7 @@ body {
 }
 
 .nav.scrolled .nav-inner {
-  padding: 6px 48px;
+  padding: 4px 48px; /* antes 6px */
 }
 
 /* LOGO (CORRIGIDA) */
