@@ -65,7 +65,7 @@ body {
   padding-top: 140px;
 }
 
-/* NAV BAR FULL WIDTH */
+/* NAV */
 .nav {
   position: fixed;
   top: 0;
@@ -76,81 +76,44 @@ body {
   background: transparent;
 }
 
-/* estado quando rolar */
 .nav.scrolled {
-  position: fixed;
-  top: 0;
-  left: 0;
   background: rgba(2, 6, 23, 0.75);
   backdrop-filter: blur(12px);
   box-shadow: 0 10px 30px rgba(0,0,0,0.4);
 }
 
-/* diminuir altura geral */
-.nav.scrolled .nav-inner {
-  padding: 8px 48px;
-  transition: all 0.35s ease;
-}
-
-/* diminuir logo */
-.nav.scrolled .logo img {
-  height: 130px;
-  transform: scale(1.05);
-  filter: drop-shadow(0 8px 18px rgba(0,0,0,0.6));
-}
-
-/* SOMBRA / GRADIENTE DO TOPO */
-.nav::before {
-  content: "";
-  position: absolute;
-  inset: 0 0 auto 0;
-  height: 140px;
-  background: linear-gradient(
-    to bottom,
-    rgba(2, 6, 23, 0.9),
-    rgba(2, 6, 23, 0)
-  );
-  backdrop-filter: blur(8px);
-  z-index: -1;
-}
-
-/* CONTEÚDO CENTRAL DA NAV */
+/* NAV INNER */
 .nav-inner {
   max-width: 1400px;
   margin: auto;
-  padding: 18px 48px;
+  padding: 14px 48px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: padding 0.35s ease;
 }
 
-/* estado ao rolar */
 .nav.scrolled .nav-inner {
-  padding: 10px 48px;
+  padding: 6px 48px;
 }
 
-.logo img {
-  height: 160px;
-  width: auto;
-  transform: translateY(6px);
-  filter: drop-shadow(0 6px 14px rgba(0,0,0,0.35));
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* LOGO */
+/* LOGO (CORRIGIDA) */
 .logo {
   display: flex;
   align-items: center;
 }
 
 .logo img {
-  height: 140px;
-  transition: all 0.35s ease;
+  height: 110px;
+  width: auto;
+  display: block;
+  transition: height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: drop-shadow(0 6px 14px rgba(0,0,0,0.35));
 }
 
 .nav.scrolled .logo img {
-  height: 80px;
+  height: 140px;
+  filter: drop-shadow(0 10px 22px rgba(0,0,0,0.6));
 }
 
 /* LINKS */
