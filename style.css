@@ -30,6 +30,7 @@ body {
   color: var(--text-main);
   line-height: 1.7;
   overflow-x: hidden;
+  padding-top: 0;
 }
 
 /* 2️⃣ BLURS DECORATIVOS */
@@ -73,6 +74,7 @@ body {
 
 /* estado quando rolar */
 .nav.scrolled {
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
   position: fixed;
   top: 0;
   left: 0;
