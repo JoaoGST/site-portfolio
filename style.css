@@ -22,6 +22,11 @@ html {
   scroll-padding: 80px;
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+}
+
 /* 1️⃣ FUNDO MAIS PROFUNDO */
 body {
   font-family: 'Inter', sans-serif;
@@ -63,7 +68,7 @@ body {
   position: relative;
   z-index: 10;
   background: radial-gradient(circle at top, #0f172a, #020617);
-  padding-top: 140px;
+  padding-top: 100px;
 }
 
 /* NAV */
@@ -83,7 +88,24 @@ body {
   box-shadow: 0 10px 30px rgba(0,0,0,0.4);
 }
 
+.menu-toggle {
+  width: 30px;
+  height: 22px;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  z-index: 1001;
+}
 
+.menu-toggle span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background: var(--text-main);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
 
 /* NAV INNER */
 .nav-inner {
@@ -150,6 +172,22 @@ body {
 
 .nav-links a:hover {
   color: var(--text-main);
+}
+
+/* ANIMAÇÃO MENU MOBILE */
+.nav-links {
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition: 
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.nav-links.active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
 /* 3️⃣ SECTIONS COM MAIS RESPIRO */
@@ -232,20 +270,27 @@ body {
 /* PROJECTS */
 .projects {
   display: grid;
-  gap: 22px;
+  grid-template-columns: 1fr; /* 1 por linha sempre */
+  gap: 28px;
 }
 
 /* 7️⃣ CARDS MAIS PREMIUM */
 .project-card {
-  padding: 26px;
+  padding: 28px 32px;
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+
   background: linear-gradient(
     180deg,
     rgba(15,23,42,0.9),
     rgba(15,23,42,0.7)
   );
+
   border: 1px solid var(--border);
-  border-radius: 16px;
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  border-radius: 18px;
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .project-card:hover {
@@ -274,6 +319,7 @@ body {
 .contact-links {
   display: flex;
   gap: 22px;
+  flex-wrap: wrap;
 }
 
 .contact-links a {
@@ -300,7 +346,8 @@ body {
 /* HERO editorial estilo Massimo */
 .hero-vignelli {
   position: relative;
-  height: 100vh;
+  height: auto;
+  min-height: 100vh;
   overflow: hidden;
   background: #020617;
 }
@@ -326,12 +373,12 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  padding: 70px 22px 0;
+  padding: 120px 20px 60px;
 }
 
 /* TÍTULO */
 .hero-vignelli h1 {
-  font-size: 4.5rem;
+  font-size: clamp(2.2rem, 6vw, 4.5rem);
   line-height: 0.95;
   letter-spacing: -1px;
   margin-bottom: 20px;
@@ -371,7 +418,7 @@ body {
 /* TYPING */
 .typing {
   font-family: 'Source Code', monospace;
-  font-size: 2rem;
+  font-size: clamp(1rem, 3vw, 2rem);
   color: var(--text-muted);
   margin-bottom: 16px;
 }
@@ -427,21 +474,31 @@ body {
   margin-top: 6px;
 }
 
+/* RESPONSIVIDADE */
+/* =========================
+   TABLETS (até 1024px)
+========================= */
 @media (max-width: 1024px) {
 
   .nav-inner {
     padding: 0 28px;
+    height: 80px;
   }
 
   .logo img {
-    height: 120px;
+    height: 90px;
+  }
+
+  .hero-content {
+    padding: 100px 20px 60px;
+    max-width: 800px;
   }
 
   .hero-vignelli h1 {
-    font-size: 3.6rem;
+    font-size: clamp(2.5rem, 5vw, 3.6rem);
   }
 
-  .hero-vignelli .hero-sub {
+  .hero-sub {
     font-size: 0.95rem;
   }
 
@@ -450,81 +507,148 @@ body {
   }
 }
 
+
+/* =========================
+   MOBILE (até 768px)
+========================= */
 @media (max-width: 768px) {
 
   /* NAV */
   .nav-inner {
-    flex-direction: column;
-    gap: 18px;
-    padding: 16px 20px;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 20px;
+    height: 70px;
   }
 
-  .nav-links {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .nav-links a {
-    margin: 6px 12px;
-    font-size: 0.9rem;
+  .menu-toggle {
+    display: flex;
   }
 
   .logo img {
-    height: 100px;
+    height: 65px;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+
+    background: rgba(2,6,23,0.98);
+    backdrop-filter: blur(10px);
+
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+
+    padding: 24px 0;
+
+    display: none;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links a {
+    font-size: 1rem;
   }
 
   /* HERO */
-  .hero-vignelli .hero-content {
-    padding-top: 60px;
+  .hero-vignelli {
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 60px;
   }
 
-  .typing {
-    font-size: 1.2rem;
+  .hero-content {
+    margin: 0;
+    padding: 0 20px;
+    max-width: 100%;
   }
 
   .hero-vignelli h1 {
-    font-size: 3rem;
+    font-size: clamp(2.2rem, 6vw, 3rem);
     line-height: 1;
   }
 
-  .hero-vignelli .hero-sub {
+  .hero-sub {
     font-size: 0.9rem;
     max-width: 100%;
   }
 
+  .typing {
+    font-size: 1.1rem;
+  }
+
   /* SECTIONS */
+  .section {
+    padding: 45px 18px;
+  }
+
   .section h2 {
     font-size: 1.5rem;
   }
 
   /* PROJECTS */
   .projects {
-    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .project-card {
+    padding: 22px;
+    border-radius: 14px;
+  }
+
+  .project-card h3 {
+    font-size: 1.1rem;
+  }
+
+  .project-card p {
+    font-size: 0.9rem;
   }
 
   /* CONTACT */
   .contact-links {
-    flex-direction: column;
-    gap: 14px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 16px;
   }
 }
 
+
+/* =========================
+   SMALL MOBILE (até 480px)
+========================= */
 @media (max-width: 480px) {
+
+  .nav-inner {
+    height: 65px;
+  }
+
+  .logo img {
+    height: 55px;
+  }
+
+  .hero-vignelli {
+    padding-bottom: 50px;
+  }
+
+  .hero-vignelli h1 {
+    font-size: 2rem;
+  }
+
+  .hero-sub {
+    font-size: 0.85rem;
+  }
 
   .typing {
     font-size: 1rem;
   }
 
-  .hero-vignelli h1 {
-    font-size: 2.4rem;
-  }
-
-  .hero-vignelli .hero-sub {
-    font-size: 0.85rem;
-  }
-
   .section {
-    padding: 45px 16px;
+    padding: 40px 16px;
   }
 
   .skills-grid {
@@ -533,7 +657,7 @@ body {
 
   .skills-grid span {
     font-size: 0.8rem;
-    padding: 7px 14px;
+    padding: 7px 12px;
   }
 
   .project-card {
@@ -541,6 +665,14 @@ body {
   }
 
   .statement {
-    padding: 80px 16px;
+    padding: 70px 16px;
+  }
+
+  .contact-links {
+    gap: 13px;
+  }
+
+  .contact-links a {
+    font-size: 0.9rem;
   }
 }
